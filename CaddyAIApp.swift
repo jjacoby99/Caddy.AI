@@ -1,17 +1,23 @@
-//
-//  CaddyAIApp.swift
-//  CaddyAI
-//
-//  Created by Josh Jacoby on 2025-01-23.
-//
-
 import SwiftUI
+import Firebase
 
 @main
 struct CaddyAIApp: App {
+    @StateObject var authViewModel = AuthViewModel()
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authViewModel.isAuthenticated {
+                LandingPageView()
+                    .environmentObject(authViewModel)
+            } else {
+                SignInView()
+                    .environmentObject(authViewModel)
+            }
         }
     }
 }
