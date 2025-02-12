@@ -14,6 +14,11 @@ struct LandingPageView: View {
                 .tabItem {
                     Label("Play", systemImage: "map.fill")
                 }
+            
+            CourseSearchView()
+                .tabItem {
+                    Label("Courses", systemImage: "figure.golf")
+                }
 
             ProfileView()
                 .tabItem {
